@@ -1,0 +1,46 @@
+﻿
+
+@using EducationCourse.Models
+@model Course
+@{
+    ViewBag.Title = "CourseDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<div style="display: flex; justify-content:flex-end; flex-direction:column; align-items:center;">
+    <div class="card">
+        <div class="" style="margin-top:30px;">
+            @if (Session["Email"] != null)
+            {
+                <a href="@Url.Action("CourseDetailVideos", "Home", new { id = Model.CourseId })">
+                    <img src="@Model.Image" class="card-img-top" alt="...">
+                </a>
+            }
+            else
+            {
+                <img src="@Model.Image" class="card-img-top" alt="...">
+            }
+        </div>
+        <div class="card-body">
+            <h1 class="card-title" style="text-align:center">@Model.Title</h1>
+            <p class="card-text" style="text-align:center;">@Model.Description</p>
+            <p class="card-text">Instructor is: @Model.Instructor.Name</p>
+            <p class="card-text">Category: @Model.Category.Name</p>
+        </div>
+        <div class="card-footer">@Model.Hours Hours</div>
+
+        @if (Session["Email"] != null)
+        {
+            <a href="@Url.Action("GetCourse", "Home", new { id = Model.CourseId })" class="btn btn-primary">Get Course</a>
+
+            
+        }
+        else
+        {
+            <a style="margin-left:20px; text-decoration:none;" href="@Url.Action("Login", "Home")">Please login to get course</a>
+        }
+        </div>
+</div>

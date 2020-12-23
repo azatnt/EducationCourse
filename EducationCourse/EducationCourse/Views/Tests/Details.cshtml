@@ -1,0 +1,67 @@
+﻿@model EducationCourse.Models.Test
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Test</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Course.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Course.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Topic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Topic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Variants1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Variants1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Variants2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Variants2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Variants3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Variants3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Variants4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Variants4)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TestId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,77 @@
+﻿@model IPagedList<EducationCourse.Models.LectureFiles>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using PagedList.Mvc;
+@using PagedList;
+
+<div style="text-align: center; height: 200px; margin-top: 100px; background-color: #212529; color:white" " class="jumbotron">
+
+    <h2>Lecture Files</h2>
+
+</div>
+
+<style>
+    a {
+        color: white;
+        text-decoration: none;
+    }
+
+        a:hover {
+            color: white;
+            text-decoration: none;
+        }
+</style>
+<p>
+    <button class="btn btn-success">
+        @Html.ActionLink("Create New", "Create")
+
+    </button>
+</p>
+<table class="table">
+    <tr>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+
+        <div class="jumbotron" style="width:50%; margin-left:290px;">
+            <h1 style="text-align:center">
+                @Html.DisplayFor(modelItem => item.Course.Title)
+            </h1>
+            <h1 class="display-4" style="margin-top:30px;"><iframe width="460" style="margin-left:10px;" height="215" src="@Html.DisplayFor(modelItem => item.FilePath)" frameborder="0" encrypted-media" allowfullscreen></iframe></h1>
+            <p class="lead">
+                @Html.DisplayFor(modelItem => item.Name)
+
+            </p>
+            <hr class="my-4">
+            <p>
+                @Html.DisplayFor(modelItem => item.Description)
+            </p>
+            <p>
+            </p>
+
+            <p class="lead">
+
+                <button class="btn btn-primary" style="">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.LectureFilesId })
+                </button>
+                <button class="btn btn-dark" style="margin-left:10px;">
+                    @Html.ActionLink("Delete", "Delete", new { id = item.LectureFilesId })
+
+                </button>
+            </p>
+        </div>
+
+
+    }
+
+</table>
+
+<div style="border:1px solid black; padding-left: 500px;">
+    @Html.PagedListPager(Model, i => Url.Action("Index", "LectureFiles", new { i, search = Request.QueryString["search"] }))
+</div>

@@ -1,0 +1,73 @@
+﻿@using EducationCourse.Models
+@model  Customer
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model.Courses.Count == 0)
+{
+    <p>You don't have any courses yet!</p>
+}
+else
+{
+
+    <div style="margin-top: 5%; border: 1px solid dimgrey;">
+        <h1 style="font-size:50px; text-align:center;">Welcome back</h1>
+        <p style="text-align:center; font-size: 20px;">My courses</p>
+    </div>
+
+    @*<fieldset>
+        <legend>List of my courses</legend>
+
+        <div class="display-label"><b>Имя</b></div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Name)
+        </div>
+
+        <div class="display-label"><b>Фамилия</b></div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Surname)
+        </div>
+
+        <div class="display-label"><b>Courses</b></div>
+        <ul>
+            @foreach (Course c in Model.Courses)
+            {
+                <li>@c.Title</li>
+            }
+        </ul>
+
+    </fieldset>*@
+
+
+
+    <div class="container" style="margin-top: 110px; border:1px solid black; ">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            @foreach (Course item in Model.Courses)
+            {
+                <div class="col">
+                    <div class="card col  text-white bg-dark mb-3" style=" margin-top: 40px; border:1px solid red;">
+                        <a href="@Url.Action("CourseDetail", "Home", new { id=item.CourseId })">
+                            <img src="@Html.DisplayFor(modelItem => item.Image)" class="card-img-top" style="height: 210px; width: 297px;" alt="...">
+                        </a>
+                        <div class="card-body" style="height: 250px; text-align:center">
+                            <h5 class="card-title"> @Html.DisplayFor(modelItem => item.Title)</h5>
+                            <p class="card-text" style="font-size: 13px;"> @Html.DisplayFor(modelItem => item.Description)</p>
+                            <div style="display:flex">
+                                <h5 class="card-title">@Html.DisplayFor(modelItem => item.Hours) Hours</h5>
+                            </div>
+                            <div style="display:flex">
+                                <p>Instructor:</p><p class="text-muted" style="margin-left: 1%"> @Html.DisplayFor(modelItem => item.Instructor.Name)</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
+
+
+    </div>
+
+}

@@ -1,0 +1,43 @@
+﻿@model EducationCourse.Models.CustomerLogin
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align:center; margin-top:20px;">Welcome to Leticia</h2>
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal" style="border: 1px solid black; width:300px; margin-top:30px; margin-left: 410px; border-radius:10px;">
+        @Html.ValidationSummary(true)
+
+        <div class="form-group" style="padding-left: 45px; margin-top:20px;">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+
+        <div class="form-group" style="padding-left: 45px;">
+            @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Password)
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 30px; padding-left:85px;">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" style="width:90px;" value="Login" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+
+
+    <div style="height: 200px;"></div>
+}

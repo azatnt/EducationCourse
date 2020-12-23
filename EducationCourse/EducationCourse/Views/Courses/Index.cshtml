@@ -1,0 +1,72 @@
+﻿@model IEnumerable<EducationCourse.Models.Course>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="text-align: center; height: 200px; margin-top: 100px; background-color: #212529; color:white" " class="jumbotron">
+
+    <h2>All Courses in website</h2>
+
+</div>
+<p>
+    <button class="btn btn-success">
+        @Html.ActionLink("Create New", "Create")
+
+    </button>
+</p>
+<table class="table">
+    
+
+    <style>
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+            a:hover {
+                color: white;
+                text-decoration: none;
+            }
+    </style>
+
+    <div class="container" style="margin-top: 110px; border:1px solid black; ">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            @foreach (var item in Model)
+            {
+                <div class="col">
+                    <div class="card col  text-white bg-danger mb-3" style=" margin-top: 40px; border:1px solid red;">
+                        <a href="@Url.Action("CourseDetail", "Home", new { id=item.CourseId })">
+                            <img src="@Html.DisplayFor(modelItem => item.Image)" class="card-img-top" style="height: 210px; width: 297px;" alt="...">
+                        </a>
+                        <div class="card-body" style="height: 300px; text-align:center">
+                            <h5 class="card-title"> @Html.DisplayFor(modelItem => item.Title)</h5>
+                            <p class="card-text" style="font-size: 13px;"> @Html.DisplayFor(modelItem => item.Description)</p>
+                            <div style="display:flex">
+                                <h5 class="card-title">@Html.DisplayFor(modelItem => item.Hours) Hours</h5>
+                            </div>
+                            <div style="display:flex">
+                                <p>Instructor:</p><p class="" style="margin-left: 1%"> @Html.DisplayFor(modelItem => item.Instructor.Name)</p>
+                            </div>
+                            <div style=" padding-right: 230px; margin-bottom:20px; display:flex">
+                                <button class="btn btn-primary" style="">
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.CourseId })
+                                </button>
+                                <button class="btn btn-dark" style="margin-left:10px;">
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.CourseId })
+
+                                </button>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
+
+
+    </div>
+
+</table>

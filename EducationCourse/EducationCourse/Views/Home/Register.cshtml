@@ -1,0 +1,66 @@
+﻿@model EducationCourse.Models.CustomerRegister
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align:center; margin-top:20px;">Welcome to Leticia</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal" style="border: 1px solid black; width:300px; margin-top:30px; margin-left: 410px; border-radius:10px; padding-left:40px">
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Surname, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Surname)
+                @Html.ValidationMessageFor(model => model.Surname)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Password)
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ConfirmPassword, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ConfirmPassword)
+                @Html.ValidationMessageFor(model => model.ConfirmPassword)
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" style="margin-left:10px" value="Зарегистрировать" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}

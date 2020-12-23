@@ -1,0 +1,81 @@
+﻿@model IEnumerable<EducationCourse.Models.Course>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+
+<div class="" style="border: 1px solid black; height: 500px; margin-top: 30px; background-image: url('https://www.oppida.co/wp-content/uploads/2019/08/How-to-prepare-your-learners-for-online-study-1200x675.png'); ">
+    
+</div>
+
+<div style="margin-top: 5%; border: 1px solid dimgrey;">
+    <h1 style="font-size:50px; padding-left:43%">Leticia</h1>
+    <p style="padding-left:39%; font-size: 20px;">Online course for everyone</p>
+</div>
+
+<div class="container">
+
+
+    <div class="row">
+        <div style="align-items:center; width: 100%;">
+
+
+            @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <div class="navbar-form navbar-right" style="margin-top: 40px; display: flex;">
+
+
+                    <div class="form-group" style="width: 50%; margin-left: 20%;">
+                        <input type="text" placeholder="Please search" id="Title" name="Title" class="form-control" data-autocomplete-source='@Url.Action("AutocompleteSearch", "Home")' />
+                    </div>
+                    <div style="margin-left: 1%;">
+                        <button type="submit" class="btn btn-success">
+                            Search
+                        </button>
+                    </div>
+                </div>
+
+            }
+        </div>
+
+
+
+    </div>
+
+
+
+    <div class="container" style="margin-top: 110px; border:1px solid black; ">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            @foreach (var item in Model)
+            {
+                <div class="col">
+                    <div class="card col  text-white bg-dark mb-3" style=" margin-top: 40px; border:1px solid red;">
+                        <a href="@Url.Action("CourseDetail", "Home", new { id=item.CourseId })">
+                            <img src="@Html.DisplayFor(modelItem => item.Image)" class="card-img-top" style="height: 210px; width: 297px;" alt="...">
+                        </a>
+                        <div class="card-body" style="height: 250px; text-align:center">
+                            <h5 class="card-title"> @Html.DisplayFor(modelItem => item.Title)</h5>
+                            <p class="card-text" style="font-size: 13px;"> @Html.DisplayFor(modelItem => item.Description)</p>
+                            <div style="display:flex">
+                                <h5 class="card-title">@Html.DisplayFor(modelItem => item.Hours) Hours</h5>
+                            </div>
+                            <div style="display:flex">
+                                <p>Instructor:</p><p class="text-muted" style="margin-left: 1%"> @Html.DisplayFor(modelItem => item.Instructor.Name)</p>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
+
+
+    </div>
+
+
+</div>
